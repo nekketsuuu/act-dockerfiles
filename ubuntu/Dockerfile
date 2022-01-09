@@ -2,7 +2,9 @@ ARG FROM_TAG=act-latest
 FROM ghcr.io/catthehacker/ubuntu:${FROM_TAG}
 
 RUN apt-get -yq update \
- && apt-get -yq install --no-install-recommends moby-compose \
+ && apt-get -yq install --no-install-recommends \
+      moby-compose \
+      mysql-server \
  && cd ~ \
  && curl -fLO https://github.com/docker/compose-switch/releases/download/v1.0.4/docker-compose-linux-amd64 \
  && ( echo '6e84b469dd206eac050ca52c3b7176f7a3385322482e9679c81a16af44ae24c2eb1725472c2056c29d2819485caea74e538997e90d262726f1df101bfd083d2e  docker-compose-linux-amd64' | sha512sum --check --strict ) \
